@@ -1,0 +1,25 @@
+{
+  "name": "restful-api",
+  "version": "1.0.0",
+  "description": "Building a RESTful Api with Node+Express+PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diskodenso/RESTful-Api.git"
+  },
+  "keywords": [
+    "RESTful-Api"
+  ],
+  "author": "Denis Olf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diskodenso/RESTful-Api/issues"
+  },
+  "homepage": "https://github.com/diskodenso/RESTful-Api#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
