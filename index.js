@@ -2,6 +2,7 @@
 import 'dotenv/config'; 
 // import express
 import express from 'express';
+import usersRouter from './routes/usersRouter';
 // import user
 // call express
 const app = express();
@@ -11,6 +12,8 @@ const port = process.env.PORT || 5000;
 // use Middleware "app.use" to translate everything
 // whats incoming into json format
 app.use(express.json());
+// create middleware to tell where the home route is
+app.use('/api/users', usersRouter);
 // Create an Express server with separate routes for:
 // GET  /  : To get all the users 
 app
