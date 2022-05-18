@@ -21,7 +21,7 @@ app
 // create endpoint called /users or /users/:id which can execute all CRUD operations
 app.route('/users').get((req, res) => res.json(users));
 // create a endpoint for one user with /users/:id
-
+app.route("/users/:id").get((req, res) => res.json());
 // here we start our server and tell it that he has to listen for 
 // incoming requests 
 app.listen(port, () => console.log(`Server is listening on Port ${port}`));
