@@ -1,3 +1,5 @@
+// import dotenv
+import 'dotenv/config'; 
 // import express
 import express from 'express';
 // import user
@@ -9,7 +11,6 @@ const port = process.env.PORT || 5000;
 // use Middleware "app.use" to translate everything
 // whats incoming into json format
 app.use(express.json());
-// 
 // Create an Express server with separate routes for:
 // GET  /  : To get all the users 
 app
