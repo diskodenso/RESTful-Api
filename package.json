@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Building a RESTful Api with Node+Express+PostgreSQL",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +12,8 @@
     "url": "git+https://github.com/diskodenso/RESTful-Api.git"
   },
   "keywords": [
+    "node",
+    "express",
     "RESTful-Api"
   ],
   "author": "Denis Olf",
