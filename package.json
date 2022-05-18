@@ -11,7 +11,9 @@
     "url": "git+https://github.com/diskodenso/RESTful-Api.git"
   },
   "keywords": [
-    "RESTful-Api"
+    "node",
+    "express",
+    "restful-api"
   ],
   "author": "Denis Olf",
   "license": "ISC",
