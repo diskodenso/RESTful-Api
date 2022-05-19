@@ -2,7 +2,7 @@
 import 'dotenv/config'; 
 // import express
 import express from 'express';
-import usersRouter from './routes/usersRouter';
+import usersRouter from './routes/usersRouter.js';
 // import user
 // call express
 const app = express();
