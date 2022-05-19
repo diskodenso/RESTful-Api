@@ -25,3 +25,4 @@ export const getSingleUser = (req, res) => {
   // now test your :id route by using postman typing http://localhost:5000/api/users/2
   // you should get the user with the id 2
 }
+
