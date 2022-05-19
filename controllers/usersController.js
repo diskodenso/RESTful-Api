@@ -20,7 +20,13 @@ export const getSingleUser = (req, res) => {
   const { id } = req.params;
   pool
     .query("SELECT * FROM users WHERE id=$1", [id])
-    .then((data) => res.status(200).json(data.rows[0]))
+    .then((data) => {
+      if (data.rowCount == 0) {
+        res.status(404).send("There is no User matching this ID");
+      } else {
+        res.status(200).json(data.rows[0]);
+      }
+    })
     .catch((err) => res.status(500).json(err));
   // now test your :id route by using postman typing http://localhost:5000/api/users/2
   // you should get the user with the id 2
