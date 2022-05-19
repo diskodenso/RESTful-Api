@@ -2,6 +2,7 @@
 import pool from "../db/pg.js";
 
 // we have to export every controller seperately
+//------- get all user controller ---------//
 export const getAllUsers = (req, res) => {
     pool.query("SELECT * FROM users")
         // as response we send status code 200 and declare a users table with the data of data.rows
@@ -9,7 +10,8 @@ export const getAllUsers = (req, res) => {
         .catch((err) => res.status(500).json(err));
 };
 
-// after adding the single User Route, create a singleUser controller
+// after adding the single User Route (/users/:id), create a singleUser controller
+//------- get single user controller ---------//
 export const getSingleUser = (req, res) => {
     // if we only want one user we need to find a thing which
     // lets us identify the user - that can be done via the ID
@@ -21,6 +23,7 @@ export const getSingleUser = (req, res) => {
     pool
         .query("SELECT * FROM users WHERE id=$1", [id])
         .then((data) => {
+                        // here we use if else statement - if the user is not existing we would like to send a error message
             if (data.rowCount == 0) {
                 res.status(404).send("There is no User matching this ID");
             } else {
@@ -28,10 +31,14 @@ export const getSingleUser = (req, res) => {
             }
         })
         .catch((err) => res.status(500).json(err));
-    // now test your :id route by using postman typing http://localhost:5000/api/users/2
-    // you should get the user with the id 2
 };
+
+// ++++++++ POSTMAN CHECK ++++++++
+// now test your :id route by using postman typing http://localhost:5000/api/users/2
+// you should get the user with the id 2
+
 // after adding post method to our getAllUserRoute and now we create the controller
+//------- create user controller ---------//
 export const createNewUser = (req, res) => {
     // as we know the data will be passed in the body
     // to check if works console.log(req.body);
@@ -49,3 +56,19 @@ export const createNewUser = (req, res) => {
         .catch((err) => res.status(500).json(err));
 };
 
+// after adding the delete method to our specified id route we create the controller
+//------- delete user controller ---------//
+export const deleteUser = (req, res) => {
+    const { id } = req.params;
+    pool
+        .query("DELETE FROM users WHERE id=$1", [id])
+        .then((data) => {
+                        // here we use if else statement - if the user is not existing we would like to send a error message
+            if (data.rows.length == 0) {
+                res.status(404).send("There is not user matching this ID");
+            } else {
+                res.status(200).send("User successfuly deleted =)");
+            }
+        })
+        .catch((err) => res.status(500).json(err));
+};
