@@ -17,10 +17,12 @@ app.use('/api/users', usersRouter);
 // Create an Express server with separate routes for:
 // GET  /  : To get all the users 
 app
-    .route('/')
-    .get((req, res) => res.send(
-    "<h1>Welcome on our API</h1><h2>following endpoints are available:</h2>"
-));
+  .route("/")
+  .get((req, res) =>
+    res.send(
+      "<h1>Willkommen auf unserer API</h1><h2>folgende Endpunkte sind verfügbar:</h2><p>/users -> alle Users abrufen & neue Users hinzufügen</p><p>/users/:id -> einzelnen User abrufen, User löschen, User aktualisieren</p><p>/orders -> alle Orders abrufen & neue Orders hinzufügen</p><p>/order/:id -> einzelnen Order abrufen, Order löschen, Order aktualisieren</p>"
+    )
+  );
 
 // create endpoint called /users or /users/:id which can execute all CRUD operations
 app.route('/users').get((req, res) => res.json(users));
