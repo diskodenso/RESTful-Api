@@ -2,8 +2,10 @@
 import 'dotenv/config'; 
 // import express
 import express from 'express';
+// import ordersRouter
+import ordersRouter from './routes/ordersRouter.js';
+// import userRouter
 import usersRouter from './routes/usersRouter.js';
-// import user
 // call express
 const app = express();
 // create port variable to either what hosting 
@@ -12,8 +14,10 @@ const port = process.env.PORT || 5000;
 // use Middleware "app.use" to translate everything
 // whats incoming into json format
 app.use(express.json());
-// create middleware to tell where the home route is
+// create middleware to tell where the home route for users is
 app.use('/api/users', usersRouter);
+// create middleware to tell where the home route for orders is
+app.use('/api/orders', ordersRouter);
 // Create an Express server with separate routes for:
 // GET  /  : To get all the users 
 app
@@ -24,10 +28,10 @@ app
     )
   );
 
-// create endpoint called /users or /users/:id which can execute all CRUD operations
-app.route('/users').get((req, res) => res.json(users));
-// create a endpoint for one user with /users/:id
-app.route("/users/:id").get((req, res) => res.json());
+// // create endpoint called /users or /users/:id which can execute all CRUD operations
+// app.route('/users').get((req, res) => res.json(users));
+// // create a endpoint for one user with /users/:id
+// app.route("/users/:id").get((req, res) => res.json());
 // here we start our server and tell it that he has to listen for 
 // incoming requests 
 app.listen(port, () => console.log(`Server is listening on Port ${port}`));
