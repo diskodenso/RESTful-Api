@@ -72,6 +72,7 @@ export const deleteUser = (req, res) => {
         })
         .catch((err) => res.status(500).json(err));
 };
+
 // after adding the edit method to our specified id route we create the controller
 //------- edit user controller ---------//
 export const updateUser = (req, res) => {
