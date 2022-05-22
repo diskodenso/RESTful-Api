@@ -1,26 +1,20 @@
 # RESTful-Api
-In this exercise are going to create a small RESTful API using Node + Express + pgAdmin + a PostgreSQL database that will serve the client with some data about users and their orders.
+In this exercise are going to create a small RESTful-API using Node + Express + pgAdmin + a PostgreSQL database that will serve the client with some data about users and their orders.
 
-# clone the repository
+# Installation
+
+clone the repository
 ```bash
 git clone
 ```
-# install express
+install modules (express, dotenv, pg)
 ```bash
-npm i express
-```
-# install dotenv
-```bash
-npm i dotenv
-```
-# install pgAdmin
-```bash
-npm i pg
+npm i
 ```
 
 ## Description
 
-Create two table - one users table and one orders table - then feed the table like below:
+Create two tables - one users table and one orders table - then feed the table like below:
 
 ## for users
 INSERT INTO users (first_name, last_name, age) VALUES ('John', 'Doe', 18);
