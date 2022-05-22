@@ -64,10 +64,28 @@ export const deleteUser = (req, res) => {
         .query("DELETE FROM users WHERE id=$1", [id])
         .then((data) => {
                         // here we use if else statement - if the user is not existing we would like to send a error message
-            if (data.rows.length == 0) {
+            if (data.rowCount == 0) {
                 res.status(404).send("There is not user matching this ID");
             } else {
                 res.status(200).send("User successfuly deleted =)");
+            }
+        })
+        .catch((err) => res.status(500).json(err));
+};
+//------- update user controller ---------//
+export const updateUser = (req, res) => {
+    const { id } = req.params;
+    const { first_name, last_name } = req.body;
+    pool
+        // SQL command UPDATE users SET 
+        .query("UPDATE users SET first_name=$1, last_name=$2, age=$3 WHERE id=$4 RETURNING*;",
+            [first_name, last_name, age, id]
+        )
+        .then((data) => {
+            if (data.rowCount == 0) {
+                res.status(404).send("There is no User matching this ID")
+            } else {
+                res.status(200).json(data.rows[0]);
             }
         })
         .catch((err) => res.status(500).json(err));
