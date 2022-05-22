@@ -72,18 +72,26 @@ export const deleteUser = (req, res) => {
         })
         .catch((err) => res.status(500).json(err));
 };
-//------- update user controller ---------//
+
+// after adding the edit method to our specified id route we create the controller
+//------- edit user controller ---------//
 export const updateUser = (req, res) => {
+    // we take id out of the params of the request
     const { id } = req.params;
+    // we destructure out of the request body firstName and lastName
     const { first_name, last_name } = req.body;
     pool
-        // SQL command UPDATE users SET 
-        .query("UPDATE users SET first_name=$1, last_name=$2, age=$3 WHERE id=$4 RETURNING*;",
-            [first_name, last_name, age, id]
+        .query(
+            // update command of sql and give both firstname and lastname new values
+            // our condition, where(welcher) id=$3 (id=$3 -> is element 3) 
+            // with RETURNING * we return the updated list
+            //$1 / 2 / 3 stands for the number in the parameter array[$1(firstName), $2(lastName), $3(id)]
+            "UPDATE users SET first_name=$1, last_name=$2 WHERE id=$3 RETURNING*;",
+            [first_name, last_name, id]
         )
         .then((data) => {
             if (data.rowCount == 0) {
-                res.status(404).send("There is no User matching this ID")
+                res.status(404).send("There is no User matching this ID");
             } else {
                 res.status(200).json(data.rows[0]);
             }
