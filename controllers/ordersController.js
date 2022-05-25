@@ -1,5 +1,4 @@
 // import pool from pg
-import query from 'express/lib/middleware/query';
 import pool from '../db/pg.js'
 
 // we have to export every controller seperately
